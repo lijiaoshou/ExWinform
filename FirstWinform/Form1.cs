@@ -16,5 +16,12 @@ namespace FirstWinform
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WinformCommon.FirstControl fControl = new WinformCommon.FirstControl();
+            //fControl.Show();
+            fControl.Show();
+        }
     }
 }

@@ -28,12 +28,62 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.button1 = new System.Windows.Forms.Button();
+            this.myListControl1 = new WinformCommon.MyListControl();
+            this.firstControl1 = new WinformCommon.FirstControl();
+            this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(253, 269);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // myListControl1
+            // 
+            this.myListControl1.Item.Add(1);
+            this.myListControl1.Item.Add(2);
+            this.myListControl1.Item.Add(3);
+            this.myListControl1.Item.Add(4);
+            this.myListControl1.Location = new System.Drawing.Point(222, 36);
+            this.myListControl1.Name = "myListControl1";
+            this.myListControl1.Scope = new WinformCommon.Scope(12, 50);
+            this.myListControl1.Size = new System.Drawing.Size(200, 143);
+            this.myListControl1.TabIndex = 2;
+            this.myListControl1.Text = "myListControl1";
+            // 
+            // firstControl1
+            // 
+            this.firstControl1.Location = new System.Drawing.Point(12, 27);
+            this.firstControl1.Name = "firstControl1";
+            this.firstControl1.Size = new System.Drawing.Size(145, 143);
+            this.firstControl1.TabIndex = 1;
+            this.firstControl1.Text = "firstControl1";
+            this.firstControl1.TextAlignment = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(565, 403);
+            this.Controls.Add(this.myListControl1);
+            this.Controls.Add(this.firstControl1);
+            this.Controls.Add(this.button1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
+        private WinformCommon.FirstControl firstControl1;
+        private WinformCommon.MyListControl myListControl1;
     }
 }
 

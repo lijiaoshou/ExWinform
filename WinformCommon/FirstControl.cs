@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.Design.Serialization;
 using System.Drawing;
+using System.Drawing.Design;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -21,15 +22,15 @@ namespace WinformCommon
         private ContentAlignment alignmentValue = ContentAlignment.MiddleRight;
 
         #region 关于标签
-       // 在这个属性之上有两个Attribute，这两个attribute描述了控件在设计时所表现出来的特征。我们来看看在控件设计中有哪些主要用到的设计时Attribute。 
+       // 在这个属性之上有两个Attribute，这两个attribute描述了控件在设计时所表现出来的特征。我们来看看在控件设计中有哪些主要用到的设计时Attribute。
        //BrowsableAttribute：描述是否一个属性或事件应该被显示在属性浏览器里。
        //CategoryAttribute：描述一个属性或事件的类别，当使用类别的时候，属性浏览器按类别将属性分组。
        //DescriptionAttribute：当用户在属性浏览器里选择属性的时候，description里指定的文本会显示在属性浏览器的下边，向用户显示属性的功能。
        //BindableAttribute：描述是否一个属性倾向于被绑定。
-       //DefaultPropertyAttribute：为组件指定一个默认的属性，当用户在Form设计器上选择一个控件的时候，默认属性会在属性浏览器里被选中。   
+       //DefaultPropertyAttribute：为组件指定一个默认的属性，当用户在Form设计器上选择一个控件的时候，默认属性会在属性浏览器里被选中。
        //DefaultValueAttribute：为一个简单类型的属性设置一个默认值。
        //EditorAttribute：为属性指定一个特殊的编辑器。
-       //LocalizableAttribute：指示一个属性是否能被本地化，任何有这个Attribute的属性将会被持久化到资源文件里。   
+       //LocalizableAttribute：指示一个属性是否能被本地化，任何有这个Attribute的属性将会被持久化到资源文件里。
        //DesignerSerializationVisibilityAttribute：指示一个属性是否或者如何持久化到代码里。
        //TypeConverterAttribute：为属性指定一个类型转换器，类型转换器能将属性的值转化成其它的数据类型。
        //DefaultEventAttribute：为组件指定一个默认的事件，当用户在form设计其中选择一个控件的时候，在属性浏览器中这个事件被选中。
@@ -87,6 +88,9 @@ namespace WinformCommon
 
         #region 添加一个scope属性
         [Browsable(true)]
+        //[Editor(typeof(ScopeEditor), typeof(UITypeEditor))]
+        //隐藏上边的弹框，改用下变得下拉显示
+        [Editor(typeof(ScopeDropDownEditor), typeof(UITypeEditor))]
         public Scope Scope
         {
             get; set;
@@ -228,6 +232,18 @@ namespace WinformCommon
             }
             return base.ConvertFrom(context, culture, value);
         }
+
+        #region 实现scope框的分别编辑
+        public override bool GetPropertiesSupported(ITypeDescriptorContext context)
+        {
+            return true;
+        }
+
+        public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
+        {
+            return TypeDescriptor.GetProperties(typeof(Scope), attributes);
+        }
+        #endregion
     }
     #endregion
 }

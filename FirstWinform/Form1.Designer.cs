@@ -45,14 +45,14 @@
             // 
             // myListControl1
             // 
-            this.myListControl1.Item.Add(1);
-            this.myListControl1.Item.Add(2);
-            this.myListControl1.Item.Add(3);
             this.myListControl1.Item.Add(4);
-            this.myListControl1.Location = new System.Drawing.Point(222, 36);
+            this.myListControl1.Item.Add(2);
+            this.myListControl1.Item.Add(25);
+            this.myListControl1.Item.Add(1);
+            this.myListControl1.Location = new System.Drawing.Point(213, 48);
             this.myListControl1.Name = "myListControl1";
-            this.myListControl1.Scope = new WinformCommon.Scope(12, 50);
-            this.myListControl1.Size = new System.Drawing.Size(200, 143);
+            this.myListControl1.Scope = new WinformCommon.Scope(1, 2);
+            this.myListControl1.Size = new System.Drawing.Size(251, 159);
             this.myListControl1.TabIndex = 2;
             this.myListControl1.Text = "myListControl1";
             // 

@@ -63,6 +63,9 @@
     <Compile Include="SecondControl.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FirstControl.resx">
+      <DependentUpon>FirstControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScopeEditorControl.resx">
       <DependentUpon>ScopeEditorControl.cs</DependentUpon>
     </EmbeddedResource>

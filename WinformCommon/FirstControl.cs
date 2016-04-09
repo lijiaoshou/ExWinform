@@ -16,6 +16,48 @@ namespace WinformCommon
     #region 第一个控件
     public class FirstControl : Control
     {
+        private string _displayText = "Hello World!";
+        private Color _textColor = Color.Red;
+
+        [Browsable(true)]
+        [DefaultValue("Hello World")]
+        public string DisplayText
+        {
+            get
+            {
+                return _displayText;
+            }
+            set
+            {
+                _displayText = value;
+                Invalidate();
+            }
+        }
+
+        [Browsable(true)]
+        public Color TextColor
+        {
+            get
+            {
+                return _textColor;
+            }
+            set
+            {
+                _textColor = value;
+                Invalidate();
+            }
+        }
+
+        public void ResetTextColor()
+        {
+            TextColor = Color.Red;
+        }
+
+        public bool ShouldSerializeTextColor()
+        {
+            return TextColor != Color.Red;
+        }
+
         public FirstControl()
         { }
 
@@ -74,10 +116,25 @@ namespace WinformCommon
                 Text,
                 Font,
                 new SolidBrush(ForeColor),
-                ClientRectangle
+                ClientRectangle,style
                 );
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FirstControl
+            // 
+            this.Click += new System.EventHandler(this.FirstControl_Click);
+            this.ResumeLayout(false);
+
+        }
+
+        private void FirstControl_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     #endregion
 
